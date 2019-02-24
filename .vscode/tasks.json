@@ -8,7 +8,7 @@
             "type": "shell",
             "command": "g++",
             "args": [
-                "-Wall", "-std=c++0x", "hello.cpp"
+                "-Wall", "-std=c++0x", "${fileBasename}"
             ],
             "group": "build",
             "presentation": {
