@@ -8,7 +8,7 @@
             "type": "shell",
             "command": "g++",
             "args": [
-                "-Wall", "-std=c++0x", "${fileBasename}"
+                "-Wall", "-std=c++0x", "${fileBasename}", "-pthread"
             ],
             "group": "build",
             "presentation": {
