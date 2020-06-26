@@ -8,6 +8,7 @@
             "type": "shell",
             "command": "g++",
             "args": [
+                // This works on opened cpp file on vscode editor
                 "-Wall", "-std=c++0x", "${fileBasename}", "-pthread"
             ],
             "group": "build",
