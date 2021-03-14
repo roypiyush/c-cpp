@@ -6,6 +6,10 @@ using namespace std;
 
 #define SLEEP_TIME_IN_MILLIS 1000
 
+/*
+use -pthread in option
+*/
+
 void foo() {
     cout << "Doing stuffs in foo()" << endl;
     this_thread::sleep_for(std::chrono::milliseconds(SLEEP_TIME_IN_MILLIS));
