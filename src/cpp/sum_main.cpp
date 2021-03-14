@@ -4,6 +4,10 @@
 #include "sum.h"
 
 using namespace std; 
+
+enum boolean { NO, YES };
+enum escapes { BELL = '\a', BACKSPACE = '\b', TAB = '\t', NEWLINE = '\n', VTAB = '\v', RETURN = '\r' };
+
   
 // Driver Code 
 int main() 
@@ -17,4 +21,6 @@ int main()
     cout << "Sum is: "
          << sumOfTwoNumbers(a, b) 
          << endl; 
+    cout << NO << endl;
+    cout << YES << endl;
 } 
