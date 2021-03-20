@@ -29,7 +29,7 @@ int main()
 
 /* 
     getline: read a line into s, return length
- */
+*/
 int getline(void)
 {
     int c, i;
