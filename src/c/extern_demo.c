@@ -1,22 +1,21 @@
 #include <stdio.h>
-#define MAXLINE 1000 /* maximum input line length */
+#define MAXLINE 1000
 
-int getline();
+int getlineFunc();
 void copy();
 
 #define MAXLINE 1000
-/* maximum input line size */
 
-char line[MAXLINE]; /* current input line */
-char longest[MAXLINE]; /* longest line saved here */
+char line[MAXLINE];
+char longest[MAXLINE];
 
 
 int main()
 {
-    int len = 0; /* current line length */
+    int len = 0;
     int max = 0;
     extern char longest[MAXLINE];
-    while ((len = getline()) > 0)
+    while ((len = getlineFunc()) > 0)
         if (len > max)
         {
             max = len;
@@ -27,13 +26,10 @@ int main()
     return 0;
 }
 
-/* 
-    getline: read a line into s, return length
-*/
-int getline(void)
+int getlineFunc(void)
 {
     int c, i;
-    extern char line[MAXLINE]; /* current input line */
+    extern char line[MAXLINE];
     for (i = 0; i < MAXLINE - 1 && (c = getchar()) != EOF && c != '\n'; ++i)
         line[i] = c;
     if (c == '\n')

@@ -1,6 +1,5 @@
 #include "iostream" 
-  
-// Including header file 
+
 #include "sum.h"
 
 using namespace std; 
