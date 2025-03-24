@@ -2,7 +2,7 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "C/C++: Debug Executable",
+            "name": "C/C++: Debug Executable Custom",
             "type": "cppdbg",
             "request": "launch",
             "program": "${workspaceFolder}/build/bin/${fileBasenameNoExtension}",
@@ -19,11 +19,11 @@
                     "ignoreFailures": true
                 }
             ],
-            "preLaunchTask": "cmake: build current file",
+            "preLaunchTask": "cmake: build current file custom",
             "miDebuggerPath": "/usr/bin/gdb"
         },
         {
-            "name": "C/C++: Debug Tests",
+            "name": "C/C++: Debug Tests Custom",
             "type": "cppdbg",
             "request": "launch",
             "program": "${workspaceFolder}/build/test_main",
@@ -40,7 +40,7 @@
                     "ignoreFailures": true
                 }
             ],
-            "preLaunchTask": "cmake: build tests",
+            "preLaunchTask": "cmake: build tests custom",
             "miDebuggerPath": "/usr/bin/gdb"
         }
     ]
