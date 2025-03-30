@@ -7,6 +7,7 @@ using namespace std;
 
 struct MyMessage
 {
+
     const std::string message;
 
     MyMessage(const std::string &str) : message(str) {}
@@ -45,12 +46,22 @@ enum TrafficLight
     GREEN
 };
 
+struct MyStruct
+{
+    double c; // 8 bytes
+    int b;    // 4 bytes (aligned)
+};
+
 auto main() -> int
 {
+    cout << sizeof(MyStruct) << endl;
+    cout << "000" << endl;
+
     int *a = new int[2];
     a[0] = 1;
     a[1] = 2;
     cout << add(a[0], a[1]) << endl;
+    cout << a[0] << " " << endl;
 
     char name[6] = {'H', 'e', 'l', 'l', 'o', '\0'};
     cout << name << endl;

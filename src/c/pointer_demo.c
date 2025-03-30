@@ -25,4 +25,7 @@ int main(int argc, char *argv[])
     ip = &x;
     *ip = *ip + 1;
     printf("int value = %d | Int pointer Value = %d  address = %p\n", x, *ip, ip);
+
+    void *integer = (int *)1; // = 1 will raise warning
+    printf("Printing void* %d \n", integer);
 }
