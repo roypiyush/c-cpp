@@ -1,20 +1,21 @@
 
-#include <stdio.h>
-#include <sys/socket.h>
 #include <arpa/inet.h>
-#include <unistd.h>
+#include <stdio.h>
 #include <string.h>
 #include <sys/ioctl.h>
+#include <sys/socket.h>
+#include <unistd.h>
 #define PORT 80
 
-int main(int argc, char const *argv[])
-{
+int main(int argc, char const *argv[]) {
     int sock = 0, valread;
     struct sockaddr_in serv_addr;
-    char hello[] = "GET http://www.google.com/ HTTP/1.1\nUser-Agent: Mozilla/4.0 (compatible; MSIE5.01; Windows NT)\nHost: localhost\nAccept-Language: en-us\nAccept-Encoding: gzip, deflate\nConnection: Keep-Alive\n\n";
+    char hello[] =
+        "GET http://www.google.com/ HTTP/1.1\nUser-Agent: Mozilla/4.0 "
+        "(compatible; MSIE5.01; Windows NT)\nHost: localhost\nAccept-Language: "
+        "en-us\nAccept-Encoding: gzip, deflate\nConnection: Keep-Alive\n\n";
     char buffer[1024] = {0};
-    if ((sock = socket(AF_INET, SOCK_STREAM, 0)) < 0)
-    {
+    if ((sock = socket(AF_INET, SOCK_STREAM, 0)) < 0) {
         printf("\n Socket creation error \n");
         return -1;
     }
@@ -24,18 +25,16 @@ int main(int argc, char const *argv[])
 
     // Convert IPv4 and IPv6 addresses from text to binary form
     // 162.243.10.151
-    if (inet_pton(AF_INET, "172.217.163.68", &serv_addr.sin_addr) <= 0)
-    {
+    if (inet_pton(AF_INET, "172.217.163.68", &serv_addr.sin_addr) <= 0) {
         printf("\nInvalid address/ Address not supported \n");
         return -1;
     }
 
-    if (connect(sock, (struct sockaddr *)&serv_addr, sizeof(serv_addr)) < 0)
-    {
+    if (connect(sock, (struct sockaddr *)&serv_addr, sizeof(serv_addr)) < 0) {
         printf("\nConnection Failed \n");
         return -1;
     }
-    
+
     send(sock, hello, strlen(hello), 0);
     const int MAX_BYTES = 1024;
     int available = 0;

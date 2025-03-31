@@ -1,39 +1,31 @@
 
 
+#include <my_vector.h>
+
 #include <iostream>
 #include <memory>
-#include <my_vector.h>
 
 using namespace std;
 
 MyVector::MyVector(const int size) : element{new double[size]}, sz{size} {}
 
-int MyVector::size()
-{
-    return sz;
-}
+int MyVector::size() { return sz; }
 
-double &MyVector::operator[](const int pos)
-{
-
+double &MyVector::operator[](const int pos) {
     static double dummy = 0.0;
-    if (pos < 0 || pos >= sz)
-    {
+    if (pos < 0 || pos >= sz) {
         return dummy;
     }
 
     return element[pos];
 }
 
-std::ostream &operator<<(std::ostream &os, const MyVector &vec)
-{
+std::ostream &operator<<(std::ostream &os, const MyVector &vec) {
     printf("Vector(%d)", vec.sz);
     os << " [";
-    for (int i = 0; i < vec.sz; i++)
-    {
+    for (int i = 0; i < vec.sz; i++) {
         os << i << "->" << vec.element[i];
-        if (i < vec.sz - 1)
-        {
+        if (i < vec.sz - 1) {
             os << ", ";
         }
     }
@@ -42,41 +34,34 @@ std::ostream &operator<<(std::ostream &os, const MyVector &vec)
     return os;
 }
 
-MyVector::MyVector(const MyVector &vec) : element(new double[vec.sz]), sz(vec.sz)
-{
-    for (int i = 0; i < vec.sz; i++)
-    {
+MyVector::MyVector(const MyVector &vec)
+    : element(new double[vec.sz]), sz(vec.sz) {
+    for (int i = 0; i < vec.sz; i++) {
         element[i] = vec.element[i];
     }
 }
 
-MyVector &MyVector::operator=(const MyVector &vec)
-{
-    if (this == &vec)
-    {
-        return *this; // Handle self-assignment
+MyVector &MyVector::operator=(const MyVector &vec) {
+    if (this == &vec) {
+        return *this;  // Handle self-assignment
     }
 
     delete[] element;
 
     sz = vec.sz;
     element = new double[sz];
-    for (int i = 0; i < vec.sz; i++)
-    {
+    for (int i = 0; i < vec.sz; i++) {
         element[i] = vec.element[i];
     }
     return *this;
 }
 
-MyVector::MyVector(MyVector &&vec) : element(vec.element), sz(vec.sz)
-{
+MyVector::MyVector(MyVector &&vec) : element(vec.element), sz(vec.sz) {
     delete[] vec.element;
     vec.sz = 0;
 }
 
-int main()
-{
-
+int main() {
     MyVector vec(2);
     vec[0] = 1;
     vec[1] = 2;

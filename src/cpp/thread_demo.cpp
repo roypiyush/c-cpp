@@ -1,6 +1,6 @@
+#include <chrono>
 #include <iostream>
 #include <thread>
-#include <chrono>
 
 using namespace std;
 
@@ -23,13 +23,13 @@ void bar(int x) {
 }
 
 int main() {
-    thread first (foo);      // spawn new thread that calls foo()
-    thread second (bar, 0);  // spawn new thread that calls bar(0)
+    thread first(foo);      // spawn new thread that calls foo()
+    thread second(bar, 0);  // spawn new thread that calls bar(0)
     cout << "main, foo and bar now execute concurrently...\n";
-    
+
     // synchronize threads:
-    first.join();                // pauses until first finishes
-    second.join();               // pauses until second finishes
-    
+    first.join();   // pauses until first finishes
+    second.join();  // pauses until second finishes
+
     cout << "foo and bar completed.\n";
 }

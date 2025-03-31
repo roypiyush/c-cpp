@@ -2,37 +2,30 @@
 
 using namespace std;
 
-struct node
-{
+struct node {
     int data;
     node *left;
     node *right;
 };
 
-node *flattenBinaryTree(node *root)
-{
-    if (root == NULL)
-    {
+node *flattenBinaryTree(node *root) {
+    if (root == NULL) {
         return root;
     }
 
-    if (root->left != NULL)
-    {
+    if (root->left != NULL) {
         node *left = flattenBinaryTree(root->left);
-        while (left->right != NULL)
-        {
+        while (left->right != NULL) {
             left = left->right;
         }
         left->right = root;
         root->left = left;
     }
 
-    if (root->right != NULL)
-    {
+    if (root->right != NULL) {
         node *right = flattenBinaryTree(root->right);
 
-        while (right->left != NULL)
-        {
+        while (right->left != NULL) {
             right = right->left;
         }
         right->left = root;
@@ -42,15 +35,12 @@ node *flattenBinaryTree(node *root)
     return root;
 }
 
-node *bintree2list(node *root)
-{
-    if (root == NULL)
-    {
+node *bintree2list(node *root) {
+    if (root == NULL) {
         return root;
     }
     root = flattenBinaryTree(root);
-    while (root->left != NULL)
-    {
+    while (root->left != NULL) {
         root = root->left;
     }
     return root;
@@ -58,8 +48,7 @@ node *bintree2list(node *root)
 
 /* Helper function that allocates a new node with the
    given data and NULL left and right pointers. */
-node *newNode(int data)
-{
+node *newNode(int data) {
     node *new_node = new node;
     new_node->data = data;
     new_node->left = new_node->right = NULL;
@@ -67,10 +56,8 @@ node *newNode(int data)
 }
 
 /* Function to print nodes in a given doubly linked list */
-void printList(node *node)
-{
-    while (node != NULL)
-    {
+void printList(node *node) {
+    while (node != NULL) {
         printf("%d ", node->data);
         node = node->right;
     }
@@ -79,13 +66,10 @@ void printList(node *node)
 /*
  * This is amazon's question
  */
-void printEnlightenedNodes(node *node, int depth, int *depthSoFar)
-{
-    if (node == NULL)
-        return;
+void printEnlightenedNodes(node *node, int depth, int *depthSoFar) {
+    if (node == NULL) return;
 
-    if (depth > (*depthSoFar))
-    {
+    if (depth > (*depthSoFar)) {
         // printf("depth: %d, depthSoFar: %d\n", depth, (*depthSoFar));
         (*depthSoFar) = depth;
         printf("%d ", node->data);
@@ -96,8 +80,7 @@ void printEnlightenedNodes(node *node, int depth, int *depthSoFar)
 }
 
 /* Driver program to test above functions*/
-int main()
-{
+int main() {
     // Let us create the tree shown in above diagram
     node *root = newNode(10);
     root->left = newNode(12);

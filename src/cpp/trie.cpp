@@ -2,20 +2,16 @@
 #include <string>
 #include <vector>
 
-class Trie
-{
-private:
-    struct TrieNode
-    {
+class Trie {
+   private:
+    struct TrieNode {
         std::vector<TrieNode *> children;
         bool isEndOfWord;
 
         TrieNode() : children(26, nullptr), isEndOfWord(false) {}
 
-        ~TrieNode()
-        {
-            for (TrieNode *child : children)
-            {
+        ~TrieNode() {
+            for (TrieNode *child : children) {
                 delete child;
             }
         }
@@ -23,24 +19,20 @@ private:
 
     TrieNode *root;
 
-public:
+   public:
     Trie() : root(new TrieNode()) {}
 
-    ~Trie()
-    {
+    ~Trie() {
         std::cout << "Deleting Constructor" << std::endl;
         delete root;
     }
 
-    void insert(std::string word)
-    {
+    void insert(std::string word) {
         TrieNode *current = root;
 
-        for (char c : word)
-        {
+        for (char c : word) {
             int index = c - 'a';
-            if (current->children[index] == NULL)
-            {
+            if (current->children[index] == NULL) {
                 current->children[index] = new TrieNode();
             }
             current = current->children[index];
@@ -49,16 +41,12 @@ public:
         current->isEndOfWord = true;
     }
 
-    bool search(std::string word)
-    {
+    bool search(std::string word) {
         TrieNode *current = root;
-        for (char c : word)
-        {
-
+        for (char c : word) {
             int index = c - 'a';
 
-            if (current->children[index])
-            {
+            if (current->children[index]) {
                 current = current->children[index];
             }
         }
@@ -66,14 +54,11 @@ public:
         return current != NULL && current->isEndOfWord;
     }
 
-    bool startsWith(std::string prefix)
-    {
+    bool startsWith(std::string prefix) {
         TrieNode *current = root;
-        for (char c : prefix)
-        {
+        for (char c : prefix) {
             int index = c - 'a';
-            if (!current->children[index])
-            {
+            if (!current->children[index]) {
                 return false;
             }
             current = current->children[index];
@@ -82,8 +67,7 @@ public:
     }
 };
 
-int main()
-{
+int main() {
     Trie trie;
     trie.insert("banana");
     std::cout << std::boolalpha;
