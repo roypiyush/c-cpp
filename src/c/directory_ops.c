@@ -33,6 +33,7 @@ int main(int argc, char *argv[]) {
         }
 
         printf("\n Creating a new directory [%s]\n", buff);
+
         // create a new directory
         mkdir(buff, S_IRWXU | S_IRWXG | S_IRWXO);
         printf("\n The contents of directory [%s] are as follows \n", path);
